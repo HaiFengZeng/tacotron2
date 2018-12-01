@@ -106,6 +106,7 @@ def train(num_gpus, rank, group_name, output_directory, epochs, learning_rate,
     testset = TextMelLoader(
         audiopaths_and_text='./filelists/ljs_audio_text_test_filelist.txt', hparams=hparams)
 
+
     collate_fn = TextMelCollate(hparams, fixed_length=True)
     # =====START: ADDED FOR DISTRIBUTED======
     train_sampler = DistributedSampler(trainset) if num_gpus > 1 else None
