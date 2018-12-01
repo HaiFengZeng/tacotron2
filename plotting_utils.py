@@ -10,6 +10,15 @@ def save_figure_to_numpy(fig):
     data = data.reshape(fig.canvas.get_width_height()[::-1] + (3,))
     return data
 
+def save_spectrogram_image(spectrogram):
+    fig, ax = plt.subplots(figsize=(12, 3))
+    im = ax.imshow(spectrogram, aspect="auto", origin="lower", interpolation='none')
+    plt.colorbar(im, ax=ax)
+    plt.xlabel("Frames")
+    plt.ylabel("Channels")
+    plt.tight_layout()
+    fig.canvas.draw()
+    plt.savefig("mel.png")
 
 def plot_alignment_to_numpy(alignment, info=None):
     fig, ax = plt.subplots(figsize=(6, 4))
